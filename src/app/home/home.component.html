@@ -1,0 +1,83 @@
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/crearCliente">Crear Cliente</a></li>
+  <li><a href="/asignarCuenta">Asignar Cuenta</a></li>
+  <li><a href="/asignarChequera">Asignar Chequera</a></li>
+  <li style="float:right"><a class="active" href="#about">Cerrar</a></li>
+</ul>
+<br>
+<br>
+
+<div *ngIf="data$ | async as data">
+<h1 class="centro">Tabla Clientes</h1>
+  <table id="customers" >
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>CUI</th>
+      <th>Direccion</th>
+      <th>Telefono</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let data of data">
+      <td>{{ data.id_CLIENTE }}</td>
+      <td>{{ data.nombre }}</td>
+      <td> {{ data.apellido }}</td>
+      <td>{{ data.cui }}</td>
+      <td>{{ data.direccion }}</td>
+      <td>{{ data.telefono }}</td>
+      <td><input type="submit" (click)="eliminar(data.id_CLIENTE)" value="Eliminar" /></td>
+    </tr>
+    <tr>
+  </table>
+</div>
+<br>
+
+<div *ngIf="cuenta$ | async as cuenta">
+<h1 class="centro">Tabla Cuentas</h1>
+  <table id="customers" >
+    <tr>
+      <th>ID</th>
+      <th>ID Cliente</th>
+      <th>Tipo Cuenta</th>
+      <th>Numero Cuenta</th>
+      <th>Saldo</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let cuenta of cuenta">
+      <td>{{ cuenta.id_cuenta }}</td>
+      <td>{{ cuenta.id_cliente }}</td>
+      <td *ngIf="cuenta.id_tipo==1">AHORRO</td>
+      <td *ngIf="cuenta.id_tipo==2">MONETARIA</td>
+      <td> {{ cuenta.numero_cuenta }}</td>
+      <td>{{ cuenta.saldo }}</td>
+      <td><input type="submit" (click)="eliminarCuenta(cuenta.id_cuenta)" value="Eliminar" /></td>
+    </tr>
+    <tr>
+  </table>
+</div>
+
+
+<div *ngIf="che$ | async as che">
+  <h1 class="centro">Tabla Chequeras</h1>
+    <table id="customers" >
+      <tr>
+        <th>ID</th>
+        <th>ID Cuenta</th>
+        <th>Fecha Creacion</th>
+        <th>Inicio Correlativo</th>
+        <th>Fin Correlativo</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let che of che">
+        <td>{{ che.id_chequera }}</td>
+        <td>{{ che.id_cuenta }}</td>
+        <td>{{ che.fecha }}</td>
+        <td> {{ che.num_inicio }}</td>
+        <td>{{ che.num_fin }}</td>
+        <td><input type="submit" (click)="eliminarChequera(che.id_chequera)" value="Eliminar" /></td>
+      </tr>
+      <tr>
+    </table>
+  </div>

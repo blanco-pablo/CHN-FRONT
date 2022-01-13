@@ -1,0 +1,43 @@
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/crearCliente">Crear Cliente</a></li>
+  <li><a href="/asignarCuenta">Asignar Cuenta</a></li>
+  <li><a href="/asignarChequera">Asignar Chequera</a></li>
+  <li style="float:right"><a class="active" href="#about">Cerrar</a></li>
+</ul>
+<br>
+<br>
+<h1 class="centro">Formulario Asignar Cuenta</h1>
+<div class="center">
+  <form rm [formGroup]="form" (ngSubmit)="crearCliente($event)">
+    <label for="fname">NUMERO CUENTA</label>
+    <input
+      type="text"
+      formControlName="numero_cuenta"
+      placeholder="NUMERO CUENTA"
+      autocomplete="on"
+    />
+    <label for="fname">SALDO</label>
+    <input
+      type="text"
+      formControlName="saldo"
+      placeholder="SALDO"
+      autocomplete="on"
+    />
+    <label for="fname">Tipo Cuenta</label>
+    <select formControlName="id_tipo" id="id_tipo" name="id_tipo">
+      <option [ngValue]="1">AHORRO</option>
+      <option [ngValue]="2">MONETARIA</option>
+    </select>
+
+    <label for="fname">Cliente</label>
+    <div *ngIf="data$ | async as data">
+      <select formControlName="id_CLIENTE" name="id_CLIENTE" id="id_CLIENTE">
+        <option [ngValue]="data.id_CLIENTE" *ngFor="let data of data">
+          {{ data.nombre }}
+        </option>
+      </select>
+    </div>
+    <input type="submit" value="Enviar" />
+  </form>
+</div>

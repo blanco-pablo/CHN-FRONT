@@ -1,0 +1,50 @@
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/crearCliente">Crear Cliente</a></li>
+  <li><a href="/asignarCuenta">Asignar Cuenta</a></li>
+  <li><a href="/asignarChequera">Asignar Chequera</a></li>
+  <li style="float:right"><a class="active" href="#about">Cerrar</a></li>
+</ul>
+<br>
+<br>
+<h1 class="centro">Formulario Crear Cliente</h1>
+<div class="center">
+  <form [formGroup]="form" (ngSubmit)="crearCliente($event)">
+    <label for="fname">CUI</label>
+    <input
+    type="text"
+    formControlName="cui"
+    placeholder="CUI"
+    autocomplete="on"
+    />
+    <label for="fname">Nombre</label>
+    <input
+    type="text"
+    formControlName="nombre"
+    placeholder="Nombre"
+    autocomplete="on"
+    />
+    <label for="fname">Apellido</label>
+    <input
+    type="text"
+    formControlName="apellido"
+    placeholder="Apellido"
+    autocomplete="on"
+    />
+    <label for="fname">Direccion</label>
+    <input
+    type="text"
+    formControlName="direccion"
+    placeholder="Direccion"
+    autocomplete="on"
+    />
+    <label for="fname">Telefono</label>
+    <input
+    type="text"
+    formControlName="telefono"
+    placeholder="Telefono"
+    autocomplete="on"
+    />
+    <input type="submit" value="Enviar">
+  </form>
+<div>
